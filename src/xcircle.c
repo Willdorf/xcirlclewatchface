@@ -198,18 +198,21 @@ static void inbox_receieved_handler(DictionaryIterator *iter, void *context) {
 
 	if (background_color_t) {
 		int bc = background_color_t->value->int32;
+		if (bc == 0) { //quick fix so that black colour persists
+			bc++;
+		}
 		persist_write_int(KEY_BACKGROUND_COLOR, bc);
 		background_color = GColorFromHEX(bc);
 		window_set_background_color(window, background_color);
-		APP_LOG(APP_LOG_LEVEL_DEBUG, "background color: %d", bc);
 	}
 
 	if (foreground_color_t) {
 		int fc = foreground_color_t->value->int32;
+		if (fc == 0) { //quick fix so that black colour persists
+			fc++;
+		}
 		persist_write_int(KEY_FOREGROUND_COLOR, fc);
 		foreground_color = GColorFromHEX(fc);
-
-		APP_LOG(APP_LOG_LEVEL_DEBUG, "foreground color: %d", fc);
 	}
 
   	//display the updates right away
