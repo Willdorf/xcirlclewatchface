@@ -22,7 +22,13 @@
 		"type" : "png",
 		"name" : "IMAGE_MINUTES_TERNARY_REFLECT",
 		"file" : "MinutesTernaryReflect.png"
-	}
+	},
+	{
+                "menuIcon" : true,
+                "type" : "png",
+                "name" : "IMAGE_MENU_ICON",
+                "file" : "menu.png"
+        }
     ]
   }
 }
