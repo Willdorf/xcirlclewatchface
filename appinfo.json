@@ -1,0 +1,28 @@
+{
+  "uuid": "e026fd82-502a-48da-a9f7-07dd6987e524",
+  "shortName": "XCircle",
+  "longName": "XCircle",
+  "companyName": "Willdorf",
+  "versionLabel": "1.0",
+  "sdkVersion": "3",
+  "targetPlatforms": ["basalt"],
+  "watchapp": {
+    "watchface": true
+  },
+  "capabilities" : [
+	  "configurable"
+  ],
+  "appKeys": {
+	  "backgroundColor" : 0,
+	  "foregroundColor" : 1
+  },
+  "resources": {
+    "media": [
+   	{
+		"type" : "png",
+		"name" : "IMAGE_MINUTES_TERNARY_REFLECT",
+		"file" : "MinutesTernaryReflect.png"
+	}
+    ]
+  }
+}
