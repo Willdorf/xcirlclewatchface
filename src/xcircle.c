@@ -260,6 +260,9 @@ static void window_load(Window *window) {
 static void window_unload(Window *window) {
 	gbitmap_destroy(s_ternary_minutes_bitmap);
 	bitmap_layer_destroy(s_ternary_minutes_layer);
+
+	//destroy the main layer
+	layer_destroy(s_layer);
 }
 
 static void init(void) {
