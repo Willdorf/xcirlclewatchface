@@ -22,17 +22,29 @@ $submitButton.on('click', function() {
 	document.location = return_to + encodeURIComponent(JSON.stringify(getAndStoreConfigData()));
 });
 
+var degreeOption = 0;
+function tabClickHandler(value) {
+	console.log(value);
+	if (value == "Celsius") {
+		degreeOption = 0;
+	} else if (value == "Fahrenheit") {
+		degreeOption = 1;
+	}
+}
+
 function getAndStoreConfigData() {
 	var $backgroundColorPicker = $('#backgroundColorPicker');
 	var $foregroundColorPicker = $('#foregroundColorPicker');
 
 	var options = {
 		backgroundColor : $backgroundColorPicker.val(),
-		foregroundColor : $foregroundColorPicker.val()
+		foregroundColor : $foregroundColorPicker.val(),
+		degreeOption : degreeOption
 	};
 
 	localStorage.willdorfxcirclebackgroundColor = options.backgroundColor;
 	localStorage.willdorfxcircleforegroundColor = options.foregroundColor;
+	localStorage.willdorfxcircledegreeOption = options.degreeOption;
 
 	console.log('Got Options: ' + JSON.stringify(options));
 	return options;
@@ -42,9 +54,19 @@ function loadOptions() {
 	var $backgroundColorPicker = $('#backgroundColorPicker');
 	var $foregroundColorPicker = $('#foregroundColorPicker');
 
-	if (localStorage.backgroundColor) {
+	if (localStorage.willdorfxcirclebackgroundColor) {
 		$backgroundColorPicker[0].value = localStorage.willdorfxcirclebackgroundColor;
 		$foregroundColorPicker[0].value = localStorage.willdorfxcircleforegroundColor;
+
+		//set the corresponding tab to active
+		degreeOption = localStorage.willdorfxcircledegreeOption;
+		if (degreeOption == 0) {
+			$('#Celsius').attr('class', 'tab-button active');
+		} else {
+			$('#Fahrenheit').attr('class', 'tab-button active');
+		}
+	} else {
+		$('#Celsius').attr('class', 'tab-button active');
 	}
 }
 
